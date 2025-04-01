@@ -23,6 +23,20 @@ defmodule MailParserTest do
     assert pdf_content_bytes == File.read!("test/fixtures/sample.pdf")
   end
 
+  test "extracts headers from raw message" do
+    raw_message = File.read!("test/fixtures/example.txt")
+
+    assert {:ok,
+            %MailParser.Header{
+              bcc: nil,
+              cc: "Arno.Nuehm@example.com",
+              date: "2022-05-17T08:05:04Z",
+              from: "joe@example.com",
+              subject: "Bestellung 0340/2022",
+              to: "max.mustermann@example.com"
+            }} = MailParser.extract_header(raw_message)
+  end
+
   test "returns error if parsing fails" do
     assert :error = MailParser.extract_nested_attachments("")
   end

@@ -16,6 +16,7 @@ defmodule MailParser do
     version: version
 
   alias __MODULE__.Attachment
+  alias __MODULE__.Header
 
   @doc """
   Parses a string containing a RFC5322 raw message and extracts all nested
@@ -32,4 +33,7 @@ defmodule MailParser do
   """
   @spec extract_nested_attachments(String.t()) :: {:ok, [Attachment.t()]} | :error
   def extract_nested_attachments(_raw_message), do: :erlang.nif_error(:nif_not_loaded)
+
+  @spec extract_header(String.t()) :: {:ok, [Header.t()]} | :error
+  def extract_header(_raw_message), do: :erlang.nif_error(:nif_not_loaded)
 end
