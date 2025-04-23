@@ -9,7 +9,7 @@ mod atoms {
 }
 
 #[derive(Clone, Debug, NifStruct)]
-#[module = "MailParser.Attachment"]
+#[module = "ExMailParser.Attachment"]
 struct Attachment {
     name: String,
     content_type: Option<String>,
@@ -17,7 +17,7 @@ struct Attachment {
 }
 
 #[derive(Clone, Debug, NifStruct)]
-#[module = "MailParser.Header"]
+#[module = "ExMailParser.Header"]
 struct Header {
     subject: String,
     from: String,
@@ -26,6 +26,18 @@ struct Header {
     bcc: Option<String>,
     date: String,
 }
+
+// #[derive(Clone, Debug, NifStruct)]
+// #[module = "MailParser.MessagePart"]
+// pub struct MessagePart<'x> {
+//     pub headers: Vec<Header<'x>>,
+//     pub is_encoding_problem: bool,
+//     pub body: PartType<'x>,
+//     pub encoding: Encoding,
+//     pub offset_header: usize,
+//     pub offset_body: usize,
+//     pub offset_end: usize,
+// }
 
 impl From<&MessagePart<'_>> for Attachment {
     fn from(part: &MessagePart) -> Self {
@@ -169,13 +181,4 @@ fn extract_body_preview(raw_message: &str, preview_len: usize) -> NifResult<(Ato
 //     }
 // }
 
-rustler::init!(
-    "Elixir.MailParser",
-    [
-        extract_nested_attachments,
-        extract_header,
-        extract_body_html,
-        extract_body_text,
-        extract_body_preview
-    ]
-);
+rustler::init!("Elixir.ExMailParser");

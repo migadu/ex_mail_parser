@@ -1,5 +1,5 @@
 [package]
-name = "mail_parser_nif"
+name = "ex_mail_parser_nif"
 version = "0.1.0"
 authors = ["swerter"]
 edition = "2021"
@@ -7,7 +7,7 @@ repository = "https://github.com/migadu/ex_mail_parser"
 keywords = ["elixir"]
 
 [lib]
-name = "mail_parser_nif"
+name = "ex_mail_parser_nif"
 path = "src/lib.rs"
 crate-type = ["cdylib"]
 

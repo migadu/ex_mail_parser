@@ -1,4 +1,4 @@
-defmodule MailParser.Attachment do
+defmodule ExMailParser.Attachment do
   @moduledoc """
   A message attachment.
   """

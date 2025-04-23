@@ -1,4 +1,4 @@
-defmodule MailParser do
+defmodule ExMailParser do
   @moduledoc """
   NIF binding of mail_parser using Rustler.
   """
@@ -27,8 +27,8 @@ defmodule MailParser do
 
   ### Example
 
-      iex> MailParser.extract_nested_attachments(raw_message)
-      {:ok, [%MailParser.Attachment{name: "example.pdf", content_type: "application/pdf", content_bytes: "..."}]}
+      iex> ExMailParser.extract_nested_attachments(raw_message)
+      {:ok, [%ExMailParser.Attachment{name: "example.pdf", content_type: "application/pdf", content_bytes: "..."}]}
 
   """
   @spec extract_nested_attachments(String.t()) :: {:ok, [Attachment.t()]} | :error

@@ -1,4 +1,4 @@
-defmodule MailParser.MixProject do
+defmodule ExMailParser.MixProject do
   use Mix.Project
 
   @version "1.0.0"
@@ -35,7 +35,7 @@ defmodule MailParser.MixProject do
 
   defp docs do
     [
-      main: "MailParser",
+      main: "ExMailParser",
       extras: ["CHANGELOG.md"],
       skip_undefined_reference_warnings_on: ["CHANGELOG.md"],
       source_ref: "v#{@version}",
@@ -47,10 +47,10 @@ defmodule MailParser.MixProject do
     [
       files: [
         "lib",
-        "native/mail_parser_nif/Cargo.toml",
-        "native/mail_parser_nif/Cargo.lock",
-        "native/mail_parser_nif/src",
-        "native/mail_parser_nif/.cargo",
+        "native/ex_mail_parser_nif/Cargo.toml",
+        "native/ex_mail_parser_nif/Cargo.lock",
+        "native/ex_mail_parser_nif/src",
+        "native/ex_mail_parser_nif/.cargo",
         "checksum-*.exs",
         "mix.exs",
         "README.md",

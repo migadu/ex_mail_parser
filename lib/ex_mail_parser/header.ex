@@ -1,4 +1,4 @@
-defmodule MailParser.Header do
+defmodule ExMailParser.Header do
   @moduledoc """
   A message header.
   """
