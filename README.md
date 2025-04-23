@@ -1,20 +1,20 @@
 # MailParser
 
-[![CI](https://github.com/kloeckner-i/mail_parser/actions/workflows/ci.yml/badge.svg)](https://github.com/kloeckner-i/mail_parser/actions/workflows/ci.yml)
-[![Build precompiled NIFs](https://github.com/kloeckner-i/mail_parser/actions/workflows/release.yml/badge.svg)](https://github.com/kloeckner-i/mail_parser/actions/workflows/release.yml)
-[![Docs](https://img.shields.io/badge/hex-docs-green.svg?style=flat)](https://hexdocs.pm/mail_parser)
-[![Hex.pm](https://img.shields.io/hexpm/v/mail_parser?color=%23714a94)](http://hex.pm/packages/mail_parser)
+[![CI](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/ci.yml/badge.svg)](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/ci.yml)
+[![Build precompiled NIFs](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/release.yml/badge.svg)](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/release.yml)
+[![Docs](https://img.shields.io/badge/hex-docs-green.svg?style=flat)](https://hexdocs.pm/ex_mail_parser)
+[![Hex.pm](https://img.shields.io/hexpm/v/ex_mail_parser?color=%23714a94)](http://hex.pm/packages/ex_mail_parser)
 
 NIF binding of [mail_parser](https://docs.rs/mail-parser/latest/mail_parser/) using [Rustler](https://github.com/rusterlium/rustler).
 
 ## Installation
 
-The package can be installed by adding `mail_parser` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `ex_mail_parser` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:mail_parser, "~> 0.7"}
+    {:ex_mail_parser, "~> 1.0"}
   ]
 end
 ```
@@ -28,7 +28,7 @@ You also need to add Rustler to your dependencies when you want to force the com
 ```elixir
 def deps do
   [
-    {:mail_parser, "~> 0.5"}
+    {:ex_mail_parser, "~> 1.0"}
     {:rustler, ">= 0.0.0", optional: true}
   ]
 end
@@ -42,3 +42,6 @@ Licensed under either of
 - MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
 
 at your option.
+
+## Acknowledgments
+This is a originally a fork of https://github.com/kloeckner-i/mail_parser. Unfortunately, the original library only parsed the attachments and my pull-request did not get merged. So I created the ex_imap_parser.

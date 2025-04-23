@@ -1,9 +1,9 @@
 [package]
 name = "mail_parser_nif"
 version = "0.1.0"
-authors = ["kloeckner-i"]
+authors = ["swerter"]
 edition = "2021"
-repository = "https://github.com/kloeckner-i/mail_parser"
+repository = "https://github.com/MigaduMail/ex_mail_parser"
 keywords = ["elixir"]
 
 [lib]

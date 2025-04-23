@@ -2,7 +2,7 @@ defmodule MailParser.MixProject do
   use Mix.Project
 
   @version "0.8.0-dev"
-  @repo_url "https://github.com/kloeckner-i/mail_parser"
+  @repo_url "https://github.com/MigaduMail/ex_imap_parser"
 
   def project do
     [
@@ -58,7 +58,7 @@ defmodule MailParser.MixProject do
         "LICENSE-APACHE",
         "LICENSE-MIT"
       ],
-      maintainers: ["kloeckner-i"],
+      maintainers: ["swerter"],
       licenses: ["MIT", "Apache-2.0"],
       links: %{"GitHub" => @repo_url}
     ]
