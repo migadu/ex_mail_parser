@@ -1,14 +1,14 @@
 defmodule MailParser.MixProject do
   use Mix.Project
 
-  @version "0.8.0-dev"
+  @version "1.0.0"
   @repo_url "https://github.com/MigaduMail/ex_imap_parser"
 
   def project do
     [
       app: :mail_parser,
       version: @version,
-      elixir: "~> 1.12",
+      elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: docs(),
@@ -28,7 +28,7 @@ defmodule MailParser.MixProject do
   defp deps do
     [
       {:rustler, ">= 0.0.0", optional: true},
-      {:rustler_precompiled, "~> 0.5"},
+      {:rustler_precompiled, "~> 0.8"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end

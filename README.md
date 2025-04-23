@@ -5,7 +5,7 @@
 [![Docs](https://img.shields.io/badge/hex-docs-green.svg?style=flat)](https://hexdocs.pm/ex_mail_parser)
 [![Hex.pm](https://img.shields.io/hexpm/v/ex_mail_parser?color=%23714a94)](http://hex.pm/packages/ex_mail_parser)
 
-NIF binding of [mail_parser](https://docs.rs/mail-parser/latest/mail_parser/) using [Rustler](https://github.com/rusterlium/rustler).
+NIF binding of [mail_parser](https://github.com/stalwartlabs/mail-parser) using [Rustler](https://github.com/rusterlium/rustler).
 
 ## Installation
 

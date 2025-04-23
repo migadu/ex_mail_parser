@@ -36,4 +36,13 @@ defmodule MailParser do
 
   @spec extract_header(String.t()) :: {:ok, [Header.t()]} | :error
   def extract_header(_raw_message), do: :erlang.nif_error(:nif_not_loaded)
+
+  @spec extract_body_html(String.t()) :: {:ok, String.t()} | :error
+  def extract_body_html(_raw_message), do: :erlang.nif_error(:nif_not_loaded)
+
+  @spec extract_body_text(String.t()) :: {:ok, String.t()} | :error
+  def extract_body_text(_raw_message), do: :erlang.nif_error(:nif_not_loaded)
+
+  @spec extract_body_preview(String.t(), Integer.t()) :: {:ok, String.t()} | :error
+  def extract_body_preview(_raw_message, _preview_len), do: :erlang.nif_error(:nif_not_loaded)
 end

@@ -134,7 +134,48 @@ fn extract_header(raw_message: &str) -> NifResult<(Atom, Header)> {
     }
 }
 
+#[rustler::nif]
+fn extract_body_html(raw_message: &str) -> NifResult<(Atom, String)> {
+    match MessageParser::default().parse(raw_message.as_bytes()) {
+        Some(message) => Ok((atoms::ok(), message.body_html(0).unwrap().to_string())),
+        None => Err(Error::Atom("error")),
+    }
+}
+
+#[rustler::nif]
+fn extract_body_text(raw_message: &str) -> NifResult<(Atom, String)> {
+    match MessageParser::default().parse(raw_message.as_bytes()) {
+        Some(message) => Ok((atoms::ok(), message.body_text(0).unwrap().to_string())),
+        None => Err(Error::Atom("error")),
+    }
+}
+
+#[rustler::nif]
+fn extract_body_preview(raw_message: &str, preview_len: usize) -> NifResult<(Atom, String)> {
+    match MessageParser::default().parse(raw_message.as_bytes()) {
+        Some(message) => Ok((
+            atoms::ok(),
+            message.body_preview(preview_len).unwrap().to_string(),
+        )),
+        None => Err(Error::Atom("error")),
+    }
+}
+
+// #[rustler::nif]
+// fn extract_message_part(raw_message: &str) -> NifResult<(Atom, MessagePart)> {
+//     match MessageParser::default().parse(raw_message.as_bytes()) {
+//         Some(message) => Ok((atoms::ok(), get_header(&message))),
+//         None => Err(Error::Atom("error")),
+//     }
+// }
+
 rustler::init!(
     "Elixir.MailParser",
-    [extract_nested_attachments, extract_header]
+    [
+        extract_nested_attachments,
+        extract_header,
+        extract_body_html,
+        extract_body_text,
+        extract_body_preview
+    ]
 );

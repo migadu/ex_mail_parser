@@ -2,6 +2,7 @@
 ## [1.0.0] - 2025-04-23
 
 - Add basic header parsing
+- Add extract_body_html/text/preview
 - Forked from https://github.com/kloeckner-i/mail_parser/ and renamed to ex_mail_parser
 
 ## [0.7.0] - 2023-05-22

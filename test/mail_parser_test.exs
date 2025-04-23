@@ -40,4 +40,27 @@ defmodule MailParserTest do
   test "returns error if parsing fails" do
     assert :error = MailParser.extract_nested_attachments("")
   end
+
+  test "extracts html body from raw message" do
+    raw_message = File.read!("test/fixtures/example2.txt")
+
+    assert {:ok,
+            "<html><p>I was thinking about quitting the &ldquo;exporting&rdquo; to focus just on the &ldquo;importing&rdquo;,</p><p>but then I thought, why not do both? &#x263A;</p></html>"} =
+             MailParser.extract_body_html(raw_message)
+  end
+
+  test "extracts text body from raw message" do
+    raw_message = File.read!("test/fixtures/example2.txt")
+
+    assert {:ok,
+            "I was thinking about quitting the “exporting” to focus just on the “importing”,\nbut then I thought, why not do both? ☺\n"} =
+             MailParser.extract_body_text(raw_message)
+  end
+
+  test "extracts text preview from raw message" do
+    raw_message = File.read!("test/fixtures/example2.txt")
+
+    assert {:ok, "I was thinking about quitting the “exporting..."} =
+             MailParser.extract_body_preview(raw_message, 50)
+  end
 end
