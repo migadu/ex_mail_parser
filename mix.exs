@@ -6,7 +6,7 @@ defmodule MailParser.MixProject do
 
   def project do
     [
-      app: :mail_parser,
+      app: :ex_mail_parser,
       version: @version,
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,

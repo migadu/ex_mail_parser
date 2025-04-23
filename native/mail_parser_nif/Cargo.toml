@@ -13,8 +13,11 @@ crate-type = ["cdylib"]
 
 [dependencies]
 mail-parser = { version = "0.10.2", default-features = false }
-rustler = "0.36.1"
+rustler = { version = "0.36.1", default-features = false, features = ["derive"] }
 
-[profile.release]
-strip = "debuginfo"
-lto = true
+# And then, your features.
+[features]
+default = ["nif_version_2_15"]
+nif_version_2_15 = ["rustler/nif_version_2_15"]
+nif_version_2_16 = ["rustler/nif_version_2_16"]
+nif_version_2_17 = ["rustler/nif_version_2_17"]

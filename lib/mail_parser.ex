@@ -8,8 +8,8 @@ defmodule MailParser do
   github_url = mix_config[:package][:links]["GitHub"]
 
   use RustlerPrecompiled,
-    otp_app: :mail_parser,
-    crate: :mail_parser_nif,
+    otp_app: :ex_mail_parser,
+    crate: :ex_mail_parser_nif,
     mode: if(Mix.env() in [:prod, :bench], do: :release, else: :debug),
     base_url: "#{github_url}/releases/download/v#{version}",
     force_build: System.get_env("FORCE_BUILD") in ["1", "true"],
