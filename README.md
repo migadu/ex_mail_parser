@@ -19,6 +19,25 @@ def deps do
 end
 ```
 
+## Usage
+
+To parse an email, read the email file first, then extract parts of the email:
+```elixir
+
+raw_message = File.read!("test/fixtures/example.txt")
+
+{:ok, attachments} = ExMailParser.extract_nested_attachments(raw_message)
+# where the `attachments` is the list of attchments
+
+{:ok, header} = ExMailParser.extract_header(raw_message)
+
+{:ok, body_html} = ExMailParser.extract_body_html(raw_message)
+
+{:ok, body_text} = ExMailParser.extract_body_text(raw_message)
+
+{:ok, body_preview} = ExMailParser.extract_body_preview(raw_message)
+```
+
 ## Forcing compilation
 
 By default **you don't need Rust installed** because the library will try to download a precompiled NIF file. In case you want to force compilation set the `FORCE_BUILD` environment variable to `true`.
