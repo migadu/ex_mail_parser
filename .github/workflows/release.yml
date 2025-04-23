@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        nif: ["2.17", "2.16", "2.15"]
+        nif: ["2.17"]
         job:
           - {
               target: arm-unknown-linux-gnueabihf,
@@ -48,8 +48,8 @@ jobs:
               os: ubuntu-22.04,
               use-cross: true,
             }
-          - { target: x86_64-pc-windows-gnu, os: windows-2019 }
-          - { target: x86_64-pc-windows-msvc, os: windows-2019 }
+          - { target: x86_64-pc-windows-gnu, os: windows-2022 }
+          - { target: x86_64-pc-windows-msvc, os: windows-2022 }
 
     steps:
       - name: Checkout source code
