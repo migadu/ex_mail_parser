@@ -3,7 +3,7 @@ name = "mail_parser_nif"
 version = "0.1.0"
 authors = ["swerter"]
 edition = "2021"
-repository = "https://github.com/MigaduMail/ex_mail_parser"
+repository = "https://github.com/migadu/ex_mail_parser"
 keywords = ["elixir"]
 
 [lib]

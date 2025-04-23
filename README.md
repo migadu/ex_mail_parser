@@ -1,6 +1,6 @@
 # MailParser
 
-[![CI](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/ci.yml/badge.svg)](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/ci.yml)
+[![CI](https://github.com/migadu/ex_mail_parser/actions/workflows/ci.yml/badge.svg)](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/ci.yml)
 [![Build precompiled NIFs](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/release.yml/badge.svg)](https://github.com/MigaduMail/ex_mail_parser/actions/workflows/release.yml)
 [![Docs](https://img.shields.io/badge/hex-docs-green.svg?style=flat)](https://hexdocs.pm/ex_mail_parser)
 [![Hex.pm](https://img.shields.io/hexpm/v/ex_mail_parser?color=%23714a94)](http://hex.pm/packages/ex_mail_parser)

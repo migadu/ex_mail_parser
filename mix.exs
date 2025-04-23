@@ -2,7 +2,7 @@ defmodule MailParser.MixProject do
   use Mix.Project
 
   @version "1.0.0"
-  @repo_url "https://github.com/MigaduMail/ex_imap_parser"
+  @repo_url "https://github.com/migadu/ex_imap_parser"
 
   def project do
     [
