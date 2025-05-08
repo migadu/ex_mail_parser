@@ -28,8 +28,33 @@ raw_message = File.read!("test/fixtures/example.txt")
 
 {:ok, attachments} = ExMailParser.extract_nested_attachments(raw_message)
 # where the `attachments` is the list of attchments
-
-{:ok, header} = ExMailParser.extract_header(raw_message)
+{:ok,
+ %ExMailParser.Header{
+   subject: "Bestellung 0340/2022",
+   from: "joe@example.com",
+   to: "max.mustermann@example.com",
+   cc: "Arno.Nuehm@example.com",
+   bcc: nil,
+   message_id: "f938c8c82c97302cffaf3e156e982a44.asdf@example.io",
+   priority: "normal",
+   x_priority: "3 (Normal)",
+   references: "143217a679484627beefdc85cf812cbf@abc.ch",
+   newsgroup: nil,
+   reply_to: "no-reply@xxxxx.de",
+   in_reply_to: "d3396300-0f92-4fa5-8f50-ef44cce1e932@migadu.com",
+   content_type: "multipart/signed; protocol=\"application/x-pkcs7-signature\"; micalg=\"sha-256\"; boundary=\"----08D56E512143FF456D2DCB607E33BFA2\"",
+   keywords: nil,
+   comments: nil,
+   mime_version: "1.0",
+   list_id: nil,
+   list_subscribe: nil,
+   list_unsubscribe: nil,
+   list_post: nil,
+   list_archive: nil,
+   list_help: nil,
+   list_owner: nil,
+   date: "2022-05-17T08:05:04Z"
+ }} = ExMailParser.extract_header(raw_message)
 
 {:ok, body_html} = ExMailParser.extract_body_html(raw_message)
 

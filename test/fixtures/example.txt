@@ -4,6 +4,12 @@ CC: "Arno Nuehm (Arno.Nuehm@example.com)"
 	<Arno.Nuehm@example.com>
 Subject: Bestellung 0340/2022
 Date: Tue, 17 May 2022 08:05:04 +0000
+Reply-To: no-reply@xxxxx.de
+References: <143217a679484627beefdc85cf812cbf@abc.ch>
+In-Reply-To: <d3396300-0f92-4fa5-8f50-ef44cce1e932@migadu.com>
+Message-ID: <f938c8c82c97302cffaf3e156e982a44.asdf@example.io>
+X-Priority: 3 (Normal)
+Priority: normal
 Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----08D56E512143FF456D2DCB607E33BFA2"
 MIME-Version: 1.0
 

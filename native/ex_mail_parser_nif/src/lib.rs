@@ -1,4 +1,5 @@
 use mail_parser::{Message, MessageParser, MessagePart, MimeHeaders};
+
 use rustler::{Atom, Binary, Env, Error, NifResult, NifStruct, OwnedBinary, Term};
 use rustler::{Decoder, Encoder};
 
@@ -24,6 +25,24 @@ struct Header {
     to: String,
     cc: Option<String>,
     bcc: Option<String>,
+    message_id: Option<String>,
+    priority: Option<String>,
+    x_priority: Option<String>,
+    references: Option<String>,
+    in_reply_to: Option<String>,
+    newsgroup: Option<String>,
+    reply_to: Option<String>,
+    keywords: Option<String>,
+    comments: Option<String>,
+    mime_version: Option<String>,
+    list_id: Option<String>,
+    list_subscribe: Option<String>,
+    list_unsubscribe: Option<String>,
+    list_post: Option<String>,
+    list_archive: Option<String>,
+    list_help: Option<String>,
+    list_owner: Option<String>,
+    content_type: Option<String>,
     date: String,
 }
 
@@ -93,40 +112,95 @@ fn get_attachments(message: &Message) -> Vec<Attachment> {
         .collect()
 }
 fn get_header(message: &Message) -> Header {
+    // Here what thunderbird is asking for
+    // "From" "To" "Cc" "Bcc" "Subject" "Date" "Message-ID" "Priority" "X-Priority"
+    // "References" "Newsgroups" "In-Reply-To" "Content-Type" "Reply-To"
     let subject = message.subject().unwrap_or("untitled").to_string();
     let from = message
         .from()
-        .and_then(|from_vec| from_vec.first())
+        .and_then(|vec| vec.first())
         .and_then(|address| address.address())
         .map(|addr| addr.to_string())
         .unwrap_or_else(|| String::from(""));
 
     let to = message
         .to()
-        .and_then(|to_vec| to_vec.first())
+        .and_then(|vec| vec.first())
         .and_then(|address| address.address())
         .map(|addr| addr.to_string())
         .unwrap_or_else(|| String::from(""));
 
     let cc = message
         .cc()
-        .and_then(|cc_vec| cc_vec.first())
+        .and_then(|vec| vec.first())
         .and_then(|address| address.address())
         .map(|addr| addr.to_string());
 
     let bcc = message
         .bcc()
-        .and_then(|bcc_vec| bcc_vec.first())
+        .and_then(|vec| vec.first())
         .and_then(|address| address.address())
         .map(|addr| addr.to_string());
+
+    let message_id = message.message_id().map(|item| item.to_string());
+
+    let reply_to = message
+        .reply_to()
+        .and_then(|vec| vec.first())
+        .and_then(|address| address.address())
+        .map(|item| item.to_string());
+
+    let in_reply_to = message.in_reply_to().as_text().map(|s| s.to_string());
+    let priority = message
+        .header_raw("Priority")
+        .map(|item| item.trim().to_string());
+    let x_priority = message
+        .header_raw("X-Priority")
+        .map(|item| item.trim().to_string());
+    let references = message.references().as_text().map(|s| s.to_string());
+    let newsgroup = message
+        .header_raw("Newsgroup")
+        .map(|item| item.trim().to_string());
     let date = message.date().unwrap().to_rfc3339();
+    let list_unsubscribe = message.list_unsubscribe().as_text().map(|s| s.to_string());
+    let keywords = message.keywords().as_text().map(|s| s.to_string());
+    let comments = message.comments().as_text().map(|s| s.to_string());
+    let mime_version = message.mime_version().as_text().map(|s| s.to_string());
+    let list_id = message.list_id().as_text().map(|s| s.to_string());
+    let list_subscribe = message.list_subscribe().as_text().map(|s| s.to_string());
+    let list_post = message.list_post().as_text().map(|s| s.to_string());
+    let list_archive = message.list_archive().as_text().map(|s| s.to_string());
+    let list_help = message.list_help().as_text().map(|s| s.to_string());
+    let list_owner = message.list_owner().as_text().map(|s| s.to_string());
+    let content_type = message
+        .header_raw("Content-Type")
+        .map(|s| s.trim().to_string());
+
     Header {
         subject: subject,
         from: from,
         to: to,
         cc: cc,
         bcc: bcc,
+        message_id: message_id,
+        priority: priority,
+        x_priority: x_priority,
+        references: references,
+        newsgroup: newsgroup,
+        reply_to: reply_to,
+        in_reply_to: in_reply_to,
+        content_type: content_type,
         date: date,
+        keywords: keywords,
+        comments: comments,
+        mime_version: mime_version,
+        list_id: list_id,
+        list_subscribe: list_subscribe,
+        list_unsubscribe: list_unsubscribe,
+        list_post: list_post,
+        list_archive: list_archive,
+        list_help: list_help,
+        list_owner: list_owner,
     }
 }
 

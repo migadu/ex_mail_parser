@@ -1,4 +1,8 @@
 # Changelog
+## [1.1.0] - 2025-05-08
+
+- Added more fields to be extracted from the header
+
 ## [1.0.0] - 2025-04-23
 
 - Add basic header parsing
